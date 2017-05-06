@@ -1,0 +1,41 @@
+{
+  "name": "ocaml",
+  "version": "4.02.2+multicore-dev0",
+  "description": "OCaml (multicore :)) Compiler as an npm Package",
+  "esy": {
+    "build": [
+      "./configure -no-cfi -prefix $cur__install",
+      "make -j world.opt",
+      "make install",
+      "make clean"
+    ],
+    "buildsInSource": true,
+    "exportedEnv": {
+      "OCAMLLIB": {
+        "val": "$ocaml__install/lib/ocaml",
+        "scope": "global"
+      },
+      "CAML_LD_LIBRARY_PATH": {
+        "val": "$ocaml__install/lib/ocaml/stublibs:$ocaml__install/lib/ocaml:$CAML_LD_LIBRARY_PATH",
+        "scope": "global"
+      },
+      "OCAML_TOPLEVEL_PATH": {
+        "val": "$ocaml__install/lib/ocaml",
+        "scope": "global"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:IwanKaramazow/ocaml-multicore.git"
+  },
+  "keywords": [
+    "ocaml"
+  ],
+  "author": "",
+  "license": "QPL - See LICENSE at https://github.com/ocaml/ocaml",
+  "bugs": {
+    "url": "https://github.com/IwanKaramazow/ocaml-multicore"
+  },
+  "homepage": "https://github.com/IwanKaramazow/ocaml-multicore#readme"
+}
